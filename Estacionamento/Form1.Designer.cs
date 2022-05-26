@@ -35,9 +35,10 @@
             // 
             // Cadastrar
             // 
-            this.Cadastrar.Location = new System.Drawing.Point(504, 39);
+            this.Cadastrar.Location = new System.Drawing.Point(748, 60);
+            this.Cadastrar.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Cadastrar.Name = "Cadastrar";
-            this.Cadastrar.Size = new System.Drawing.Size(62, 105);
+            this.Cadastrar.Size = new System.Drawing.Size(93, 162);
             this.Cadastrar.TabIndex = 0;
             this.Cadastrar.Text = "Cadastrar";
             this.Cadastrar.UseVisualStyleBackColor = true;
@@ -45,9 +46,10 @@
             // 
             // Entrada
             // 
-            this.Entrada.Location = new System.Drawing.Point(572, 39);
+            this.Entrada.Location = new System.Drawing.Point(858, 60);
+            this.Entrada.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Entrada.Name = "Entrada";
-            this.Entrada.Size = new System.Drawing.Size(54, 105);
+            this.Entrada.Size = new System.Drawing.Size(81, 162);
             this.Entrada.TabIndex = 1;
             this.Entrada.Text = "Entrada";
             this.Entrada.UseVisualStyleBackColor = true;
@@ -55,9 +57,10 @@
             // 
             // Saida
             // 
-            this.Saida.Location = new System.Drawing.Point(632, 39);
+            this.Saida.Location = new System.Drawing.Point(948, 60);
+            this.Saida.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Saida.Name = "Saida";
-            this.Saida.Size = new System.Drawing.Size(54, 105);
+            this.Saida.Size = new System.Drawing.Size(81, 162);
             this.Saida.TabIndex = 2;
             this.Saida.Text = "Saida";
             this.Saida.UseVisualStyleBackColor = true;
@@ -65,12 +68,13 @@
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1200, 692);
             this.Controls.Add(this.Saida);
             this.Controls.Add(this.Entrada);
             this.Controls.Add(this.Cadastrar);
+            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "Form1";
             this.Text = "Form1";
             this.ResumeLayout(false);
