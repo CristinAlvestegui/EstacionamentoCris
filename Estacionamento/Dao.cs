@@ -13,19 +13,21 @@ namespace Estacionamento
     internal class Dao
     {
         MySqlConnection conexao;
-        public string dadosE;
-        public string dadosS;
-        public string resultadoE;
-        public string resultadoS;
+
+        //Declarando Vetores
+        public DateTime[] dataE;
+        public DateTime[] horaE;
+        public DateTime[] dataS;
+        public DateTime[] horaS;
         public int i;
         public int contador = 0;
         //data = data.Date;
        //hora = hora.Time;
 
         //Vetores
-        public DateTime[] data;
+        //public DateTime[] data;
         //public DateTimeOffset[] dataS;
-        public DateTime[] hora;
+        //public DateTime[] hora;
         //public DateTimeOffset[] horaS;
 
 
@@ -45,41 +47,85 @@ namespace Estacionamento
 
         }//Fim do construtor
 
-        public void EntradaBoa(DateTime data, DateTime hora )
+        public void SoData(DateTime dat)
         {
             try
             {
-                dadosE = "('','" + data + "','" + hora + "')";
-                resultadoE = "Insert * into ControlHora(dataE, horaE) values" + dadosE;
-                MySqlCommand sql = new MySqlCommand(resultadoE, conexao);
-                resultadoE = "" + sql.ExecuteNonQuery();
-                MessageBox.Show(resultadoE + "Salvo com sucesso!");
+                MySqlParameter Data = new MySqlParameter();
+                Data.ParameterName = "@Date";
+                Data.MySqlDbType = MySqlDbType.Date;
+                Data.Value = dat.Year + "-" + dat.Moth + "-" + dat.Day;
+                fecha = Data.Value;
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("raaaaaapaaaz!!!" + e);
+            }//Fim do catch
+        }//Fim do método SóEntrada
+
+        public void SoHora(DateTime tim)
+        {
+            try
+            {
+                MySqlParameter Tempo = new MySqlParameter();
+                Tempo.ParameterName = "@Time";
+                Tempo.MySqlDbType = MySqlDbType.Time;
+                Tempo.Value = tim.Hour + "-" + tim.Minute + "-" + tim.Second;
+                hora = Tempo.Value;
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Jesus amado!" + e);
+            }//Fim do catch
+        }//Fim do método Só Entrada
+        public void EntradaBoa(DateTime tim, DateTime dat)
+        {
+            SoHora();
+            SoData();
+            VouEntrar();
+            try
+            {
+                dados = "('','" + Date + "','" + hora + "')";
+                resultado = "Insert * into ControlHora(dataE, horaE) values" + dadosE;
+                MySqlCommand sql = new MySqlCommand(resultado, conexao);
+                resultado = "" + sql.ExecuteNonQuery();
+                MessageBox.Show(resultado + "Salvo com sucesso!");
             }
             catch (Exception e)
             {
                 MessageBox.Show("Algo deu Errado" + e);
             }//Fim do catch           
-        }
+        }//Fim do método Entrada Boa
 
-        public void SaidaBoa(DateTime data, DateTime hora)
+        public void SaidaBoa(DateTime dat, DateTime tim)
         {
-            dadosS = "('','" + data + "','" + hora + "')";
-            resultadoS = "Insert * into ControlHora(dataS, horaS) values" + dadosS;
-            MySqlCommand sql = new MySqlCommand(resultadoS, conexao);
-            resultadoS = "" + sql.ExecuteNonQuery();
-            MessageBox.Show(resultadoS + "Salvo com sucesso!" );
-        }
-        public void VetorDataE()
+            SoHora();
+            SoData();
+            VouSair();
+            try
+            {
+                dados = "('','" + data + "','" + hora + "')";
+                resultado = "Insert * into ControlHora(dataS, horaS) values" + dados;
+                MySqlCommand sql = new MySqlCommand(resultado, conexao);
+                resultado = "" + sql.ExecuteNonQuery();
+                MessageBox.Show(resultado + "Salvo com sucesso!");
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("" + e);
+            }//Fim do catch       
+        }//Fim do método para Saída Boa
+        public void VouSair()
         {
             string query = "select * from ControlHora";
 
-            data = new DateTime[100];
-            hora = new DateTime[100];
+            dataS = new DateTime[100];
+            horaS = new DateTime[100];
 
             for (i = 0; i < 100; i++)
             {
-                data[i] = new DateTime();
-                hora[i] = new DateTime();
+                dataS[i] = new DateTime();
+                horaS[i] = new DateTime();
             }
 
             //Criar o comando para coleta de dados
@@ -90,8 +136,8 @@ namespace Estacionamento
             i = 0;
             while (leitura.Read())
             {
-                data[i] = Convert.ToDateTime(leitura["dataE"] + "");
-                hora[i] = Convert.ToDateTime(leitura["horaE"] + "");
+                dataS[i] = Convert.ToDateTime(leitura["dataS"] + "");
+                horaS[i] = Convert.ToDateTime(leitura["horaS"] + "");
                 i++;
                 contador++;
             }
@@ -99,21 +145,20 @@ namespace Estacionamento
             leitura.Close();
         }//Fim do método para vetor Entrada
 
-        public void VetorDataS()
+        public void VouEntrar()
         {
             string query = "select * from ControlHora";
 
             //Instanciando vetores
             
-            data = new DateTime[100];            
-            hora = new DateTime[100];
+            dataE = new DateTime[100];            
+            horaE = new DateTime[100];
 
             //Valor inicial
             for ( i = 0 ; i < 100 ; i++)
-            {
-                
-                data[i] = new DateTime();               
-                hora[i] = new DateTime();
+            {               
+                dataE[i] = new DateTime();               
+                horaE[i] = new DateTime();
             }
 
             //Criar o comando para coleta de dados
@@ -124,8 +169,8 @@ namespace Estacionamento
             i = 0;
             while (leitura.Read())
             {
-                data[i] = Convert.ToDateTime(leitura["dataS"] + "");
-                hora[i] = Convert.ToDateTime(leitura["horaS"] + "");
+                dataE[i] = Convert.ToDateTime(leitura["dataS"] + "");
+                horaE[i] = Convert.ToDateTime(leitura["horaS"] + "");
                 i++;
                 contador++;
             }//Fim do While

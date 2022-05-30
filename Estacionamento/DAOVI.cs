@@ -48,8 +48,6 @@ namespace Estacionamento
                 //Executar o comando resultado no banco de dados
                 MySqlCommand sql = new MySqlCommand(resultado, conexao);
                 resultado = "" + sql.ExecuteNonQuery();
-                
-
             }
             catch (Exception e)
             {
@@ -173,14 +171,12 @@ namespace Estacionamento
         }
         public void Deletar(long cpf)
         {
-
             resultado = "delete from pessoa where codigo = '" + cpf + "'";
             //Executar o comando
             MySqlCommand sql = new MySqlCommand(resultado, conexao);
             resultado = "" + sql.ExecuteNonQuery();
             //Mensagem...
             Console.WriteLine("Dados Excluídos com sucesso!");
-
         } //fim do deletar
 
     }//fim da classe
