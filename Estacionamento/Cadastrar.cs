@@ -50,17 +50,32 @@ namespace Estacionamento
 
         public string ECPF()
         {
-            return textBox2.Text;
+            return maskedTextBox1.Text;
         }//CPF
 
         public string ETele()
         {
-            return textBox3.Text;
+            return maskedTextBox2.Text;
         }//Telefono
 
         private void Proximo_Click(object sender, EventArgs e)
         {
 
+        }//Fim do botão para pular de página.
+
+        private void Cadastrar_Load(object sender, EventArgs e)
+        {
+
         }
-    }
-}
+
+        private void maskedTextBox2_MaskInputRejected(object sender, MaskInputRejectedEventArgs e)
+        {
+
+        }
+
+        private void maskedTextBox1_MaskInputRejected(object sender, MaskInputRejectedEventArgs e)
+        {
+
+        }
+    }//Fim da classe
+}//Fim do projeto

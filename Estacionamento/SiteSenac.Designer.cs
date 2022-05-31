@@ -53,7 +53,7 @@
             this.Flag.FlatAppearance.BorderSize = 0;
             this.Flag.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Flag.ForeColor = System.Drawing.Color.Transparent;
-            this.Flag.Location = new System.Drawing.Point(78, 23);
+            this.Flag.Location = new System.Drawing.Point(81, 24);
             this.Flag.Name = "Flag";
             this.Flag.Size = new System.Drawing.Size(576, 508);
             this.Flag.TabIndex = 1;
@@ -65,7 +65,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.HotPink;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(768, 729);
             this.Controls.Add(this.Titulo);
             this.Controls.Add(this.Flag);
             this.Cursor = System.Windows.Forms.Cursors.Hand;

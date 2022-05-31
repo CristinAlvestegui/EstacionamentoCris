@@ -55,7 +55,7 @@ namespace Estacionamento
                 Data.ParameterName = "@Date";
                 Data.MySqlDbType = MySqlDbType.Date;
                 Data.Value = dat.Year + "-" + dat.Moth + "-" + dat.Day;
-                fecha = Data.Value;
+                data = Data.Value;
             }
             catch (Exception e)
             {
@@ -80,12 +80,12 @@ namespace Estacionamento
         }//Fim do método Só Entrada
         public void EntradaBoa(DateTime tim, DateTime dat)
         {
-            SoHora();
-            SoData();
+            SoHora(tim);
+            SoData(dat);
             VouEntrar();
             try
             {
-                dados = "('','" + Date + "','" + hora + "')";
+                dados = "('','" + data + "','" + hora + "')";
                 resultado = "Insert * into ControlHora(dataE, horaE) values" + dadosE;
                 MySqlCommand sql = new MySqlCommand(resultado, conexao);
                 resultado = "" + sql.ExecuteNonQuery();
@@ -99,8 +99,8 @@ namespace Estacionamento
 
         public void SaidaBoa(DateTime dat, DateTime tim)
         {
-            SoHora();
-            SoData();
+            SoHora(tim);
+            SoData(dat);
             VouSair();
             try
             {

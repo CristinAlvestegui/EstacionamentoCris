@@ -21,11 +21,11 @@ namespace Estacionamento
 
         private void button1_Click(object sender, EventArgs e)
         {
-            DateTime dataS = DateTime.Now;
-            DateTime horaS = DateTime.Now;
+            DateTime dataS = data.Now;
+            DateTime horaS = hora.Now;
             dao.SaidaBoa(dataS, horaS);
             MessageBox.Show("" + dataS, "" + horaS);
-            dao.VetorDataS();
+            dao.VouSair();
         }
     }//Fim da classe
 }//fim do Formulario

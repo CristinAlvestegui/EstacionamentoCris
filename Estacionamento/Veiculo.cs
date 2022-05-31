@@ -16,5 +16,10 @@ namespace Estacionamento
         {
             InitializeComponent();
         }
-    }
-}
+
+        private void Salvar_Click(object sender, EventArgs e)
+        {
+
+        }//Botão Salvar
+    }//Fim da classe Forms, "Formulários"
+}//Fim do Projeto
