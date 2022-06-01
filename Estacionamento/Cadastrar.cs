@@ -26,11 +26,15 @@ namespace Estacionamento
 
         private void Voltar_Click(object sender, EventArgs e)
         {
-            long cpf = Convert.ToInt64(ECPF());
-            string nome = ENome();
-             string telefone = ETele();
-            form.Inserir(cpf, nome, telefone);
-            form.PreencherVetor();
+            maskedTextBox1.TextMaskFormat = MaskFormat.ExcludePromptAndLiterals;
+            long cpf = Convert.ToInt64(ConteTexCPF());
+            string nome = ConteudoTextBox();
+            string telefone = ConteTexTele();
+            cadas.Inserir(cpf, nome, telefone);
+            cadas.PreencherVetor();
+            textBox6.Clear();
+            maskedTextBox1.Clear();
+            maskedTextBox2.Clear();
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
